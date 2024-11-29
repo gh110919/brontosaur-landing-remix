@@ -1,45 +1,48 @@
+import "./globals.css";
+import "./style.css";
+import "./tailwind.css";
+/*  */
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
-  Scripts,
-  ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import { NotFound } from "BASE/not-found";
+import { Provider } from "react-redux";
+import { rootStore } from "src/frontend/shared/global-state";
 
-import "./tailwind.css";
+type LayoutProps = { children: React.ReactNode };
 
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
-
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout(_props: LayoutProps) {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
+    <Provider store={rootStore}>
+      <html lang="ru">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <Meta />
+          <Links />
+        </head>
+        <>{_props.children}</>
+      </html>
+    </Provider>
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export default () => <Outlet></Outlet>;
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return <NotFound></NotFound>;
+    }
+
+    throw new Error(`${error.status} ${error.statusText}`);
+  }
+
+  throw new Error(error instanceof Error ? error.message : "Unknown Error");
 }

@@ -1,0 +1,534 @@
+{
+  "additional_advantages": [
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/analitic.svg",
+      "text": "Используйте данные для повышения эффективности работы",
+      "title": "Аналитика"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/stonks.svg",
+      "text": "Улучшайте качество обслуживания, сокращая время ожидания",
+      "title": "Повышенние удовлетворенности клиентов"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/promotions.svg",
+      "text": "Создавайте промо-акции для привлечения новых гостей и повышения лояльности текущих",
+      "title": "Специальные предложения и акции"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/geo.svg",
+      "text": "Brontosaur автоматически определяет местоположение пользователя и отображает заведения в его городе. Пользователь также может вручную выбрать другой город",
+      "title": "Мультирегиональность"
+    }
+  ],
+  "available": [
+    {
+      "name": "01",
+      "position": {
+        "mobile": {
+          "right": 30,
+          "top": 16
+        },
+        "pc": {
+          "right": 62,
+          "top": 36
+        }
+      },
+      "reverse": true,
+      "title": "Просматривать фото и видео галереи"
+    },
+    {
+      "name": "02",
+      "position": {
+        "mobile": {
+          "right": 30,
+          "top": 126
+        },
+        "pc": {
+          "right": 62,
+          "top": 204
+        }
+      },
+      "reverse": true,
+      "title": "Узнавать более подробную информацию о заведении"
+    },
+    {
+      "name": "03",
+      "position": {
+        "mobile": {
+          "bottom": 60,
+          "left": 30
+        },
+        "pc": {
+          "bottom": 166,
+          "left": 62
+        }
+      },
+      "title": "Ознакомиться с новинками меню"
+    }
+  ],
+  "booking": [
+    {
+      "name": "01",
+      "position": {
+        "mobile": {
+          "left": 30,
+          "top": 101
+        },
+        "pc": {
+          "left": 61,
+          "top": 162
+        }
+      },
+      "reverse": false,
+      "title": "Работа с данными"
+    },
+    {
+      "name": "02",
+      "position": {
+        "mobile": {
+          "right": 30,
+          "top": 148
+        },
+        "pc": {
+          "right": 61,
+          "top": 231
+        }
+      },
+      "reverse": true,
+      "title": "Параметры резерва"
+    },
+    {
+      "name": "03",
+      "position": {
+        "mobile": {
+          "bottom": 81,
+          "right": 30
+        },
+        "pc": {
+          "bottom": 211,
+          "right": 61
+        }
+      },
+      "reverse": true,
+      "title": "Выбор стола"
+    }
+  ],
+  "cards": [
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/credit.svg",
+      "name": "Бесплатное использование",
+      "text": "Brontosaur для пользователей всегда бесплатен"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/phone.svg",
+      "name": "Удобная регистрация",
+      "text": "Регистрация через подтверждение email и номера телефона"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/comp.svg",
+      "name": "Интуитивный интерфейс",
+      "text": "Все, что вам нужно, в одном месте"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/time.svg",
+      "name": "Экономия времени",
+      "text": "Будьте уверены, что столик будет вам доступен, и вас не заставят ждать долго"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/stall.svg",
+      "name": "Локальное и персонализированное обслуживание",
+      "text": "Легкий доступ к заведениям вашего города, с возможностью смены города вручную"
+    }
+  ],
+  "connection": [
+    {
+      "price": "5 000 руб.",
+      "text": "Предоставьте свои фото и видео",
+      "title": "Без планшета и самостоятельное предоставление материалов"
+    },
+    {
+      "price": "По договоренности",
+      "text": "Оговариваются при подключении к сервису",
+      "title": "Индивидуальные условия"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/tablet.png",
+      "price": "15 000 руб.",
+      "text": "Предоставляем все необходимое: планшет и услуги фото и видеосъемки",
+      "title": "С планшетом и съемкой"
+    }
+  ],
+  "essence": [
+    {
+      "name": "01",
+      "position": {
+        "mobile": {
+          "left": 30,
+          "top": 57
+        },
+        "pc": {
+          "left": 61,
+          "top": 88
+        }
+      },
+      "reverse": false,
+      "text": "Мгновенно найдите ваши любимые места, просто введя их названия в поисковую строку",
+      "title": "Форма поиска по названиям заведений"
+    },
+    {
+      "name": "02",
+      "position": {
+        "mobile": {
+          "left": 30,
+          "top": 137
+        },
+        "pc": {
+          "left": 61,
+          "top": 208
+        }
+      },
+      "reverse": false,
+      "text": "Brontosaur использует вашу геопозицию, чтобы показать ближайшие заведения. Вы можете настроить радиус показа для оптимального выбора",
+      "title": "Модуль с заведениями рядом"
+    },
+    {
+      "name": "03",
+      "position": {
+        "mobile": {
+          "bottom": 59,
+          "left": 30
+        },
+        "pc": {
+          "bottom": 129,
+          "left": 61
+        }
+      },
+      "reverse": false,
+      "text": "Следите за самыми свежими добавлениями в меню всех заведений, отсортированными по дате и времени появления в базе",
+      "title": "Модуль с новинками меню"
+    },
+    {
+      "name": "04",
+      "position": {
+        "mobile": {
+          "bottom": 176,
+          "right": 30
+        },
+        "pc": {
+          "bottom": 240,
+          "right": 63
+        }
+      },
+      "reverse": true,
+      "text": "Откройте для себя лучшие заведения на основе их рейтингов, которые учитывают количество просмотров и лайков. Каждая карточка включает фото, основную информацию, адрес и средний чек",
+      "title": "Карточки заведений по рейтингу"
+    }
+  ],
+  "functional": [
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/table.svg",
+      "text": "Укажите количество гостей, дату и время визита, и система покажет доступные столики. Недоступные столики автоматически исключаются",
+      "title": "Выбор столика"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/check.svg",
+      "text": "Выберите доступный столик, ознакомьтесь с его фото. Отправьте резерв и ожидайте подтверждение от администратора в реальном времени",
+      "title": "Подтверждение резервирования"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/book.svg",
+      "text": "Добавьте блюда в заказ, оформите и оплатите его - к вашему приходу еда уже будет готова. Меню может быть доступно только в режиме каталога, если это решение владельца заведения",
+      "title": "Предварительный заказ из меню"
+    }
+  ],
+  "inputs": [
+    {
+      "label": "Название заведения",
+      "name": "establishment",
+      "pattern": "^[a-zA-ZА-ЯЁа-яё ]{4,64}$",
+      "title": "Название заведения должно содержать только латинские и кириллические буквы, знак пробела, без цифр и спецсимволов! Обязательное поле, от 4 до 64 символов!",
+      "type": "text"
+    },
+    {
+      "label": "Фамилия и имя контактного лица",
+      "name": "fio",
+      "pattern": "^[А-ЯЁа-яё ]{2,64}$",
+      "title": "Фамилия и имя контактного лица должно содержать только кириллические буквы, знак пробела, без цифр и спецсимволов! Обязательное поле, от 2 до 64 символов!",
+      "type": "text"
+    },
+    {
+      "label": "Телефон",
+      "name": "tel",
+      "pattern": "^[+]?[0-9]{1,4}?[-.\\s]?\\(?[0-9]{1,3}?\\)?[-.\\s]?[0-9]{1,4}[-.\\s]?[0-9]{1,4}[-.\\s]?[0-9]{1,9}$",
+      "title": "Телефон должен начинаться с +7 или с 8, содержать только цифры и/или содержать знак плюса в начале! Обязательное поле, 11 или 12 символов!",
+      "type": "tel"
+    },
+    {
+      "label": "Почта",
+      "name": "email",
+      "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
+      "title": "Почта: Имя должно содержать только буквы, цифры, точки, подчеркивания, проценты, плюсы или дефисы. Затем должен следовать символ-разделитель ‘@’. Доменная часть должна содержать одну или более букв, цифр, точек или дефисов. После символа-разделителя ‘.’ доменная зона должна содержать две или более букв. Поле обязательно для заполнения и должно содержать не менее 6 символов",
+      "type": "email"
+    }
+  ],
+  "links": {
+    "available": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_macbook_2.png",
+    "booking": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_macbook_4.png",
+    "epilogue": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_iphone_2.png",
+    "essense": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_macbook_1.png",
+    "footer": {
+      "logo": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/logo_footer.svg",
+      "tg": {
+        "black": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/tg_icon_50_black.svg",
+        "white": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/telegram_white.svg"
+      },
+      "vk": {
+        "black": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/vk_icon_50_black.svg",
+        "white": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/vk_white.svg"
+      }
+    },
+    "header": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/logo_header.svg",
+    "join": {
+      "black": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/arrow_down_green.svg",
+      "white": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/arrow_down_white.svg"
+    },
+    "menu": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_macbook_5.png",
+    "prologue": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_iphone_1.png",
+    "request": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/close.svg",
+    "splash": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/symbol_color_round.png",
+    "webonizer": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/webonizer.svg",
+    "what": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/mockup_macbook_3.png"
+  },
+  "main_advantages": [
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/robot.svg",
+      "text": "Забудьте о бумажных записных книжках. Вся информация доступна на планшете",
+      "title": "Администратору заведения доступна работа с меню"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/brone.svg",
+      "text": "Администраторы могут легко добавлять и удалять резервы и заказы, видеть занятость столов в реальном времени",
+      "title": "Управление бронями"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/history.svg",
+      "text": "Вся история резервов и заказов хранится в системе",
+      "title": "Полная история операций"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/profile.svg",
+      "text": "Просматривайте историю заказов и добавляйте комментарии. Ограничивайте резервы нежелательным посетителям",
+      "title": "Индивидуальные профили клиентов"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/telephone.svg",
+      "text": "Не нужно отвечать на звонки для подтверждения резервов. Вся информация доступна онлайн и обновляется в реальном времени",
+      "title": "Автоматизация процессов"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/calendar.svg",
+      "text": "Устанавливайте дни, когда бронирования невозможны, и планируйте ваше заведение более гибко",
+      "title": "Фиксированные дни без резерва"
+    }
+  ],
+  "main_functionality": [
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/book.svg",
+      "name": "Доступна работа с меню",
+      "text": "Дабовление новых блюд, удаление старых и редактирование существующих блюд"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/calendar.svg",
+      "name": "Работа с датами",
+      "text": "Администраторы могут легко добавлять и удалять резервы и заказы, видеть занятость столов в реальном времени"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/pen.svg",
+      "name": "Работа с резервами",
+      "text": "Вся история резервов и заказов хранится в системе"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/info.svg",
+      "name": "Поддержка",
+      "text": "Просматривайте историю заказов и добавляйте комментарии. Ограничивайте резервы нежелательным посетителям"
+    },
+    {
+      "image": "https://s3.ru1.storage.beget.cloud/97dbe1e1bf81-sexy-trish/brontosaur_landing_2.0/telegram.svg",
+      "name": "Доступ к телеграм-каналам",
+      "text": "Не нужно отвечать на звонки для подтверждения резервов. Вся информация доступна онлайн и обновляется в реальном времени"
+    }
+  ],
+  "menu": [
+    {
+      "name": "01",
+      "position": {
+        "mobile": {
+          "left": 30,
+          "top": 86
+        },
+        "pc": {
+          "left": 61,
+          "top": 140
+        }
+      },
+      "reverse": false,
+      "title": "Категории меню"
+    },
+    {
+      "name": "02",
+      "position": {
+        "mobile": {
+          "right": 30,
+          "top": 139
+        },
+        "pc": {
+          "right": 61,
+          "top": 215
+        }
+      },
+      "reverse": true,
+      "title": "Редактирование меню"
+    }
+  ],
+  "meta": [
+    {
+      "title": "Brontosaur"
+    },
+    {
+      "content": "Добро пожаловать в Brontosaur - инновационную платформу для бронирования столов. Найдите идеальное место для встречи быстро и удобно. Погрузитесь в мир Brontosaur!",
+      "name": "description"
+    },
+    {
+      "content": [
+        "бронирование столов",
+        "рестораны",
+        "кафе",
+        "онлайн-бронирование",
+        "ресторанный сервис",
+        "Управление бронями",
+        "гид в мире ресторанов"
+      ],
+      "name": "keywords"
+    },
+    {
+      "content": "index, follow",
+      "name": "robots"
+    },
+    {
+      "content": "Fpp0pxGH4FRoJedVDvgieCaGz09z0C9pvCy_zTRoQCw",
+      "name": "google-site-verification"
+    },
+    {
+      "content": "e74c25232f52b3b6",
+      "name": "yandex-verification"
+    },
+    {
+      "content": "summary_large_image",
+      "name": "twitter:card"
+    },
+    {
+      "content": "Добро пожаловать в Brontosaur - инновационную платформу для бронирования столов. Найдите идеальное место для встречи быстро и удобно. Погрузитесь в мир Brontosaur!",
+      "name": "twitter:description"
+    },
+    {
+      "content": "https://storage.yandexcloud.net/brontosaur/logo/symbol_color.png",
+      "name": "twitter:image"
+    },
+    {
+      "content": "Brontosaur",
+      "name": "twitter:title"
+    },
+    {
+      "content": "Добро пожаловать в Brontosaur - инновационную платформу для бронирования столов. Найдите идеальное место для встречи быстро и удобно. Погрузитесь в мир Brontosaur!",
+      "property": "og:description"
+    },
+    {
+      "content": "https://storage.yandexcloud.net/brontosaur/logo/symbol_color.png",
+      "property": "og:image"
+    },
+    {
+      "content": "ru_RU",
+      "property": "og:locale"
+    },
+    {
+      "content": "Brontosaur Promo",
+      "property": "og:site_name"
+    },
+    {
+      "content": "Brontosaur",
+      "property": "og:title"
+    },
+    {
+      "content": "website",
+      "property": "og:type"
+    },
+    {
+      "content": "https://promo.brontosaur.ru",
+      "property": "og:url"
+    }
+  ],
+  "mail_url": "http://127.0.0.1:80/api/send_mail",
+  "what": [
+    {
+      "name": "01",
+      "position": {
+        "mobile": {
+          "left": 30,
+          "top": 16
+        },
+        "pc": {
+          "left": 61,
+          "top": 43
+        }
+      },
+      "reverse": false,
+      "title": "Работа с резервами"
+    },
+    {
+      "name": "02",
+      "position": {
+        "mobile": {
+          "right": 30,
+          "top": 16
+        },
+        "pc": {
+          "right": 61,
+          "top": 43
+        }
+      },
+      "reverse": true,
+      "title": "Работа с датами"
+    },
+    {
+      "name": "03",
+      "position": {
+        "mobile": {
+          "right": 30,
+          "top": 170
+        },
+        "pc": {
+          "right": 61,
+          "top": 233
+        }
+      },
+      "reverse": true,
+      "title": "Работа с резервами"
+    },
+    {
+      "name": "04",
+      "position": {
+        "mobile": {
+          "bottom": 60,
+          "right": 30
+        },
+        "pc": {
+          "bottom": 100,
+          "right": 61
+        }
+      },
+      "reverse": true,
+      "title": "Поддержка, для получения консультаций или решения проблем"
+    }
+  ]
+}
