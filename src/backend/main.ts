@@ -5,7 +5,7 @@ import { decoder } from "./gzip-base64-criptographer";
 
 (async function (): Promise<void> {
   const { parsed } = (await import("dotenv")).config({
-    path: "/home/env/.env.local",
+    path: "/home/env/.env.local" /* ".env.local" */,
   });
 
   const cors = (await import("cors")).default({
@@ -69,15 +69,15 @@ import { decoder } from "./gzip-base64-criptographer";
     cert: decoder(parsed!.CERT),
   };
 
-  http.createServer(express).listen(80, listener);
-  https.createServer(ssl, express).listen(443, listener);
+  http.createServer(express).listen(parsed!.HTTP, listener);
+  https.createServer(ssl, express).listen(parsed!.HTTPS, listener);
 
   const host = (() => {
     const interfaces = Object.values(networkInterfaces()).flat();
     const ip = interfaces.find((e) => e?.family === "IPv4" && !e?.internal);
     return {
-      http: `http://${ip?.address}:${80}`,
-      https: `https://${ip?.address}:${443}`,
+      http: `http://${ip?.address}:${parsed!.HTTP}`,
+      https: `https://${ip?.address}:${parsed!.HTTPS}`,
     };
   })();
   console.log("env", parsed?.ENV);
