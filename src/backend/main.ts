@@ -1,12 +1,11 @@
 import { json, Request, Response } from "express";
 import { createTransport } from "nodemailer";
 import { networkInterfaces } from "os";
-import { dirname } from "path";
-// import { decoder } from "./gzip-base64-criptographer";
+import { decoder } from "./gzip-base64-criptographer";
 
 (async function (): Promise<void> {
   const { parsed } = (await import("dotenv")).config({
-    path: dirname(".") + "/.env.local",
+    path: "/home/env/.env.local",
   });
 
   const cors = (await import("cors")).default({
@@ -66,8 +65,8 @@ import { dirname } from "path";
   };
 
   const ssl = {
-    // key: decoder(parsed!.KEY),
-    // cert: decoder(parsed!.CERT),
+    key: decoder(parsed!.KEY),
+    cert: decoder(parsed!.CERT),
   };
 
   http.createServer(express).listen(80, listener);
