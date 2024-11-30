@@ -47,7 +47,7 @@ jobs:
             sudo docker system prune -a -f || true
             git clone https://${{ secrets.GH_USER }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_USER }}/${{ vars.PROJECT }}.git /home/${{ vars.PROJECT }}
             cd /home/${{ vars.PROJECT }}
-            sudo docker compose --env-file .env.local up -d
+            sudo docker compose --env-file /home/env/.env.local up -d
 
             sudo sed -i 's|include /etc/nginx/sites-enabled/\*;|include /home/\*/nginx.conf;|' /etc/nginx/nginx.conf 
             sudo systemctl restart nginx
