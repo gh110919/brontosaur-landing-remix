@@ -38,7 +38,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
+          password: ${{ secrets.PASSWORD }}
           script: |
             sudo rm -rf /home/${{ vars.PROJECT }}
             sudo docker stop frontend_container || true
