@@ -17,8 +17,8 @@ services:
     network_mode: bridge
     ports:
       - "3000:3000"
-      - "80:80"
-      - "443:443"
+      - "3080:3080"
+      - "3443:3443"
     stdin_open: true
     tty: true
     restart: always
