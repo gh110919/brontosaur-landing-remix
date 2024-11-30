@@ -45,7 +45,7 @@ jobs:
             sudo docker rm frontend_container || true
             sudo docker rmi -f frontend_image || true
             sudo docker system prune -a -f || true
-            git clone https://${{ secrets.GH_USER }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_USER }}/${{ vars.PROJECT }}.git /home/${{ vars.PROJECT }}
+            git clone https://${{ secrets.GH_USER }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_USER }}/${{ vars.PROJECT }}.git /home/${{ vars.PROJECT }}
             cd /home/${{ vars.PROJECT }}
             sudo docker compose --env-file /home/env/.env up -d
 
