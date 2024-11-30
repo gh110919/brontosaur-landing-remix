@@ -15,14 +15,14 @@ jobs:
 
       - name: Install Docker
         run: |
-          apt-get update
-          apt install docker.io -y
-          apt install docker-compose-v2 -y
+          sudo apt-get update
+          sudo apt install docker.io -y
+          sudo apt install docker-compose-v2 -y
 
       - name: Install Nginx
         run: |
-          apt-get install -y nginx
-          systemctl restart nginx
+          sudo apt-get install -y nginx
+           systemctl restart nginx
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@v0.1.4
@@ -40,6 +40,6 @@ jobs:
             git clone https://${{ secrets.GH_USER }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_USER }}/${{ vars.PROJECT }}.git /home/${{ vars.PROJECT }}
             cd /home/${{ vars.PROJECT }}
             docker compose --env-file /home/env/.env up -d
-            
+
             sed -i 's|include /etc/nginx/sites-enabled/\*;|include /home/\*/nginx.conf;|' /etc/nginx/nginx.conf 
             systemctl restart nginx
