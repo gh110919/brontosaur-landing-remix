@@ -1,0 +1,45 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Docker
+        run: |
+          apt-get update
+          apt install docker.io -y
+          apt install docker-compose-v2 -y
+
+      - name: Install Nginx
+        run: |
+          apt-get install -y nginx
+          systemctl restart nginx
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            rm -rf /home/${{ vars.PROJECT }}
+            docker ps
+            docker stop frontend_container || true
+            docker rm frontend_container || true
+            docker rmi -f frontend_image || true
+            docker system prune -a -f || true
+            git clone https://${{ secrets.GH_USER }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_USER }}/${{ vars.PROJECT }}.git /home/${{ vars.PROJECT }}
+            cd /home/${{ vars.PROJECT }}
+            docker compose --env-file /home/env/.env up -d
+            
+            sed -i 's|include /etc/nginx/sites-enabled/\*;|include /home/\*/nginx.conf;|' /etc/nginx/nginx.conf 
+            systemctl restart nginx
