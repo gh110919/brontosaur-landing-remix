@@ -1,18 +1,17 @@
-import "../../../public/globals.css";
-import "../../../public/style.css";
-
+import { Provider } from "react-redux";
+import { rootStore } from "SHARED/global-state";
 import { Header } from "src/frontend/widgets/header";
 import { styled } from "styled-components";
 
 export const NotFound = () => {
   return (
-    <>
+    <Provider store={rootStore}>
       <Header></Header>
       <Main>
         <Title>К сожалению, этой страницы нет в нашем меню</Title>
         <Link href="/">Вернуться на главную</Link>
       </Main>
-    </>
+    </Provider>
   );
 };
 

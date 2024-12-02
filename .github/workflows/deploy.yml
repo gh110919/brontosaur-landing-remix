@@ -41,14 +41,20 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             sudo rm -rf /home/${{ vars.PROJECT }}
-            sudo docker stop frontend_container || true
-            sudo docker rm frontend_container || true
-            sudo docker rmi -f frontend_image || true
-            sudo docker system prune -a -f || true
+
+            sudo docker stop frontend_container
+            sudo docker rm frontend_container
+            
+            sudo docker rmi -f frontend_image
+
+            sudo docker system prune -a -f
+
             git clone https://${{ secrets.GH_USER }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_USER }}/${{ vars.PROJECT }}.git /home/${{ vars.PROJECT }}
             cd /home/${{ vars.PROJECT }}
+
             sudo docker compose --env-file /home/env/.env.local up -d
 
             sudo sed -i 's|include /etc/nginx/sites-enabled/\*;|include /home/\*/nginx.conf;|' /etc/nginx/nginx.conf 
             sudo systemctl restart nginx
+
             sudo reboot
