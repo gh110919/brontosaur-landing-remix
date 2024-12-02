@@ -1,3 +1,6 @@
+import "../../../public/globals.css";
+import "../../../public/style.css";
+
 import { Header } from "src/frontend/widgets/header";
 import { styled } from "styled-components";
 

@@ -1,3 +1,6 @@
+import "../../../public/globals.css";
+import "../../../public/style.css";
+
 import { Footer } from "src/frontend/widgets/footer";
 import { Header } from "src/frontend/widgets/header";
 import { Main } from "src/frontend/widgets/main";
