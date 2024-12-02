@@ -25,7 +25,9 @@ import { readFileSync } from "fs";
         .post("/api/send_mail", async (req: Request, res: Response) => {
           if (req.method === "POST") {
             const transporter = createTransport({
-              service: "gmail",
+              host: "smtp.mail.ru",
+              port: 465,
+              secure: true,
               auth: {
                 user: parsed?.EMAIL_USER,
                 pass: parsed?.EMAIL_PASS,
