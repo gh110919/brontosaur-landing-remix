@@ -69,9 +69,9 @@ const MockupImage = styled.div`
 
 const Container = styled.section`
   ${(p) => (p.className = "Container")};
+  width: calc(1440 * var(--dv));
   display: flex;
   margin-top: calc(54.74 * var(--dv));
-  transform: translate(calc(-35 * var(--dv)), 0);
   height: calc(609 * var(--dv));
   overflow: hidden;
   justify-content: center;

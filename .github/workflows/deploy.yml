@@ -51,3 +51,4 @@ jobs:
 
             sudo sed -i 's|include /etc/nginx/sites-enabled/\*;|include /home/\*/nginx.conf;|' /etc/nginx/nginx.conf 
             sudo systemctl restart nginx
+            sudo reboot
