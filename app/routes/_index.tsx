@@ -31,7 +31,7 @@ const LazyIndex = lazy(() => import("PAGES/index-page"));
 
 export default () => {
   return (
-    <Suspense>
+    <Suspense fallback={<h1>Loading...</h1>}>
       <LazyIndex></LazyIndex>
     </Suspense>
   );

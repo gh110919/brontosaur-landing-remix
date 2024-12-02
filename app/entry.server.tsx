@@ -9,7 +9,7 @@ import { ServerStyleSheet } from "styled-components";
 
 const ABORT_DELAY = 5_000;
 
-const sheet = new ServerStyleSheet();
+export const sheet = new ServerStyleSheet();
 
 export default function handleRequest(
   request: Request,
@@ -44,7 +44,7 @@ function handleBotRequest(
         context={remixContext}
         url={request.url}
         abortDelay={ABORT_DELAY}
-      ></RemixServer>,
+      />,
       {
         onAllReady() {
           shellRendered = true;
@@ -88,10 +88,19 @@ function handleBrowserRequest(
           context={remixContext}
           url={request.url}
           abortDelay={ABORT_DELAY}
-        ></RemixServer>
+        />
       ),
       {
         onShellReady() {
+          writeFileSync(
+            "public/style.css",
+            sheet
+              .getStyleTags()
+              .match(/<style[^>]*>([\s\S]*?)<\/style>/)![1]
+              .trim(),
+            "utf-8"
+          );
+
           shellRendered = true;
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
@@ -114,16 +123,6 @@ function handleBrowserRequest(
           if (shellRendered) {
             console.error(error);
           }
-        },
-        onAllReady() {
-          writeFileSync(
-            "public/style.css",
-            sheet
-              .getStyleTags()
-              .match(/<style[^>]*>([\s\S]*?)<\/style>/)![1]
-              .trim(),
-            "utf-8"
-          );
         },
       }
     );
