@@ -9,7 +9,7 @@ import { ServerStyleSheet } from "styled-components";
 
 const ABORT_DELAY = 5_000;
 
-export const sheet = new ServerStyleSheet();
+const sheet = new ServerStyleSheet();
 
 export default function handleRequest(
   request: Request,
@@ -44,7 +44,7 @@ function handleBotRequest(
         context={remixContext}
         url={request.url}
         abortDelay={ABORT_DELAY}
-      />,
+      ></RemixServer>,
       {
         onAllReady() {
           shellRendered = true;
@@ -88,7 +88,7 @@ function handleBrowserRequest(
           context={remixContext}
           url={request.url}
           abortDelay={ABORT_DELAY}
-        />
+        ></RemixServer>
       ),
       {
         onShellReady() {
@@ -117,7 +117,7 @@ function handleBrowserRequest(
         },
         onAllReady() {
           writeFileSync(
-            "app/style.css",
+            "public/style.css",
             sheet
               .getStyleTags()
               .match(/<style[^>]*>([\s\S]*?)<\/style>/)![1]

@@ -1,37 +1,17 @@
-import "./globals.css";
-import "./style.css";
-import "./tailwind.css";
-/*  */
-import { Provider } from "react-redux";
-import { rootStore } from "src/frontend/shared/global-state";
 import { Header } from "src/frontend/widgets/header";
 import { styled } from "styled-components";
 
 export const NotFound = () => {
   return (
-    <Provider store={rootStore}>
-      <head>
-        <title>Не найдено</title>
-      </head>
-      <Body>
-        <Header></Header>
-        <Main>
-          <Title>К сожалению, этой страницы нет в нашем меню</Title>
-          <Link href="/">Вернуться на главную</Link>
-        </Main>
-      </Body>
-    </Provider>
+    <>
+      <Header></Header>
+      <Main>
+        <Title>К сожалению, этой страницы нет в нашем меню</Title>
+        <Link href="/">Вернуться на главную</Link>
+      </Main>
+    </>
   );
 };
-
-const Body = styled.body`
-  ${(p) => (p.className = "Body")};
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Main = styled.main`
   ${(p) => (p.className = "Main")};
@@ -81,6 +61,11 @@ const Link = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    color: var(--accent);
+    background: var(--primary);
+  }
 
   @media (max-width: 48rem) {
     width: calc(255 * var(--mv));

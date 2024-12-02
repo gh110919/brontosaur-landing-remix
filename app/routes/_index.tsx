@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Entry } from "APP/entry";
+import { lazy, Suspense } from "react";
 import { data } from "src/frontend/api";
 
 type Meta = Partial<{
@@ -27,6 +27,12 @@ type Meta = Partial<{
 
 export const meta: MetaFunction = () => data.meta as Meta[];
 
-export default function Index() {
-  return <Entry></Entry>;
-}
+const LazyIndex = lazy(() => import("PAGES/index-page"));
+
+export default () => {
+  return (
+    <Suspense>
+      <LazyIndex></LazyIndex>
+    </Suspense>
+  );
+};

@@ -16,16 +16,13 @@ export const NumberedButton = styled.div<TNumberedButtonProps>`
   font-weight: 500;
   line-height: calc(18 * var(--dv));
   text-align: right;
-
   background: ${(p) => (p.$backColor ? p.$backColor : "var(--main)")};
   color: ${(p) => (p.$textColor ? p.$textColor : "white")};
-
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
   cursor: pointer;
-
   @media (max-width: 48rem) {
     border-radius: calc(10 * var(--mv));
     width: calc(60 * var(--mv));

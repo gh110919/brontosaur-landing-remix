@@ -11,12 +11,12 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "paths": {
-      "BASE/*": ["./app/*"],
+      "BASE/*": ["app/*"],
       "APP/*": ["src/frontend/app/*"],
       "ENTITIES/*": ["src/frontend/entities/*"],
       "FEATURES/*": ["src/frontend/features/*"],
       "PAGES/*": ["src/frontend/pages/*"],
-      "PROCESSES/*": ["./src/processes/*"],
+      "PROCESSES/*": ["src/processes/*"],
       "SHARED/*": ["src/frontend/shared/*"],
       "WIDGETS/*": ["src/frontend/widgets/*"]
     },

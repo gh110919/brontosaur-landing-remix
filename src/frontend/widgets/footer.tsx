@@ -55,13 +55,15 @@ export const Footer = () => {
   return (
     <Footer_>
       <Box>
-        <LogoBox>
-          <Image_
-            src={data.links.footer.logo}
-            width={148}
-            height={29.77}
-          ></Image_>
-        </LogoBox>
+        <a href="/">
+          <LogoBox>
+            <Image_
+              src={data.links.footer.logo}
+              width={148}
+              height={29.77}
+            ></Image_>
+          </LogoBox>
+        </a>
         <Contacts>
           <Telephone href="tel:+79516878803">+7-951-687-88-03</Telephone>
           <Email href="mailto:sales@brontosaur.ru">sales@brontosaur.ru</Email>

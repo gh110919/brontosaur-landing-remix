@@ -1,15 +1,14 @@
-import "./globals.css";
-import "./style.css";
-import "./tailwind.css";
-/*  */
 import {
   isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
+  Scripts,
+  ScrollRestoration,
   useRouteError,
 } from "@remix-run/react";
-import { NotFound } from "BASE/not-found";
+import { Body } from "ENTITIES/body";
+import { NotFound } from "PAGES/not-found";
 import { Provider } from "react-redux";
 import { rootStore } from "src/frontend/shared/global-state";
 
@@ -22,10 +21,26 @@ export function Layout(_props: LayoutProps) {
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <Meta />
-          <Links />
+          <link rel="stylesheet" href="globals.css" />
+          <link rel="stylesheet" href="style.css" />
+          <Meta></Meta>
+          <Links></Links>
         </head>
-        <>{_props.children}</>
+        <Body>
+          <noscript>
+            <div>
+              <img
+                src="https://mc.yandex.ru/watch/98271362"
+                style={{ position: "absolute", left: "-9999px" }}
+                alt=""
+              />
+            </div>
+          </noscript>
+          {_props.children}
+          <script type="module" src="metrika.js"></script>
+          <ScrollRestoration></ScrollRestoration>
+          <Scripts></Scripts>
+        </Body>
       </html>
     </Provider>
   );

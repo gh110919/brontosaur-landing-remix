@@ -28,9 +28,11 @@ export const Header = () => {
 
   return (
     <Header_>
-      <LogoBox>
-        <Image_ src={data.links.header} width={148} height={29.77}></Image_>
-      </LogoBox>
+      <a href="/">
+        <LogoBox>
+          <Image_ src={data.links.header} width={148} height={29.77}></Image_>
+        </LogoBox>
+      </a>
       <Link
         $hovered={header?.service!}
         href="https://brontosaur.ru"
