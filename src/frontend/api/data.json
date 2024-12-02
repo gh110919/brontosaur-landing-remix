@@ -470,7 +470,7 @@
       "property": "og:url"
     }
   ],
-  "mail_url": "http://127.0.0.1:3443/api/send_mail",
+  "mail_url": "https://promo.brontosaur.ru:3443/api/send_mail",
   "what": [
     {
       "name": "01",
