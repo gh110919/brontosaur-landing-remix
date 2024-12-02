@@ -1,7 +1,7 @@
 import { json, Request, Response } from "express";
 import { createTransport } from "nodemailer";
 import { networkInterfaces } from "os";
-import { decoder } from "./gzip-base64-criptographer";
+import { readFileSync } from "fs";
 
 (async function (): Promise<void> {
   const { parsed } = (await import("dotenv")).config({
@@ -65,8 +65,8 @@ import { decoder } from "./gzip-base64-criptographer";
   };
 
   const ssl = {
-    key: decoder(parsed!.KEY),
-    cert: decoder(parsed!.CERT),
+    key: readFileSync(parsed!.KEY),
+    cert: readFileSync(parsed!.CERT),
   };
 
   http.createServer(express).listen(parsed!.HTTP, listener);

@@ -48,7 +48,7 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev --host",
-    "docker-prune": "docker system prune -a",
+    "docker-clean": "bash docker-clean.sh",
     "docker-up": "docker compose --env-file .env.local up -d",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "prettier": "npx prettier . --write",
