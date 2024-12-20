@@ -113,6 +113,7 @@ const JoinBox = styled.a<{ $hovered: boolean }>`
   right: 0;
 
   @media (max-width: 48rem) {
+    border-radius: calc(14 * var(--mv));
     position: static;
     width: calc(728 * var(--mv));
     height: calc(200 * var(--mv));

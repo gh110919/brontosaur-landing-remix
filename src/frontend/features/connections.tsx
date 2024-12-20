@@ -9,7 +9,7 @@ export const Connections = () => {
         Варианты подключения
       </Title>
       <ConnectionMap></ConnectionMap>
-      <Caption>Абонентская плата – всего 1500 руб/мес</Caption>
+      <Caption>Абонентская плата – всего 2500 руб/мес</Caption>
     </Container>
   );
 };

@@ -70,6 +70,7 @@ const Header_ = styled.header`
   margin: calc(36 * var(--dv)) calc(36 * var(--dv)) 0;
 
   @media (max-width: 48rem) {
+    border-radius: calc(14 * var(--mv));
     width: calc(728 * var(--mv));
     height: calc(60 * var(--mv));
     margin: calc(20 * var(--mv)) auto 0;

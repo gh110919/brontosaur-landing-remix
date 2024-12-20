@@ -59,6 +59,7 @@ const Card = styled.div`
   background: white;
 
   @media (max-width: 48rem) {
+    border-radius: calc(14 * var(--mv));
     width: calc(728 * var(--mv));
     min-height: calc(200 * var(--mv));
     padding: calc(30 * var(--mv));

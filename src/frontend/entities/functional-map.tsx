@@ -42,6 +42,7 @@ const FunctionalCard = styled.div`
   justify-content: space-between;
 
   @media (max-width: 48rem) {
+    border-radius: calc(14 * var(--mv));
     width: calc(728 * var(--mv));
     height: calc(220 * var(--mv));
     padding: calc(34 * var(--mv));
