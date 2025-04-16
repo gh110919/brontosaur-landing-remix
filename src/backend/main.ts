@@ -1,9 +1,10 @@
 import { json, Request, Response } from "express";
+import { createServer } from "http";
 import { createTransport } from "nodemailer";
 import { networkInterfaces } from "os";
 
 (async function (): Promise<void> {
-  const { EMAIL_USER, EMAIL_PASS, EMAIL_TO, HTTP } = (
+  const { EMAIL_USER, EMAIL_PASS, EMAIL_TO, BACK } = (
     await import("dotenv")
   ).config({
     path: ".local/.env",
@@ -11,7 +12,6 @@ import { networkInterfaces } from "os";
 
   const express = (await import("express")).default();
   const cors = (await import("cors")).default;
-  const http = (await import("http")).default;
 
   const listener = () => {
     try {
@@ -62,11 +62,11 @@ import { networkInterfaces } from "os";
     }
   };
 
-  http.createServer(express).listen(HTTP, listener);
+  createServer(express).listen(BACK, listener);
 
   const { address } = Object.values(networkInterfaces())
     .flat()
     .find(({ family, internal }: any) => family === "IPv4" && internal)!;
 
-  console.log([`http://${address}:${HTTP}`]);
+  console.log([`http://${address}:${BACK}`]);
 })();

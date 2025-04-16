@@ -72,7 +72,7 @@ jobs:
                 expires 1d;
             }
             server {
-                listen 443 ssl http2;
+                listen 3443 ssl http2;
                 server_name ${{ secrets.DOMAIN }};
                 ssl_certificate /home/${{ secrets.PROJECT }}/.local/${{ secrets.PROJECT }}.cer;
                 ssl_certificate_key /home/${{ secrets.PROJECT }}/.local/${{ secrets.PROJECT }}.key;

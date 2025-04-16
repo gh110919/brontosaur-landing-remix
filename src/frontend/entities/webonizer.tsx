@@ -8,7 +8,7 @@ type TProps = Partial<{
 
 export const Webonizer = (_props?: TProps) => {
   return (
-    <Container href="https://webonizer.site" target="_blank">
+    <Container href="https://webonizer.su" target="_blank">
       <Dev>Дизайн и разработка сайта</Dev>
       <Image_ src={data.links.webonizer} width={112} height={22.18}></Image_>
     </Container>
