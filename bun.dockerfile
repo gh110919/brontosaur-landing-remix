@@ -10,6 +10,6 @@ RUN npm i -g pm2@latest
 
 RUN npm i 
 
-EXPOSE 3000 3443
+EXPOSE 3000 3080
 
 CMD ["nodemon"]
