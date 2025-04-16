@@ -1,0 +1,1 @@
+eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .

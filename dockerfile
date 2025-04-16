@@ -1,18 +1,14 @@
-FROM node:20
+FROM node:latest
 
 WORKDIR /home/build/frontend
 COPY . .
 
-RUN npm i -g bun
-RUN npm i -g pm2
+RUN npm i -g bun@latest
+RUN npm i -g bun@latest
+RUN npm i -g pm2@latest
 
-ARG arg_pm2_pk 
-ARG arg_pm2_sk
-ENV PM2_PUBLIC_KEY=${arg_pm2_pk}
-ENV PM2_SECRET_KEY=${arg_pm2_sk}
+RUN npm i 
 
-RUN bun i 
+EXPOSE 3000 3443
 
-EXPOSE 3000 3080 3443
-
-CMD ["pm2-runtime", "start", "ecosystem.config.cjs"]
+CMD ["nodemon"]

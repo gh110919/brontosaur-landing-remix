@@ -1,17 +1,17 @@
 module.exports = {
   apps: [
     {
-      name: "serve",
-      script: "bun",
-      args: "run serve",
+      name: "back",
+      script: "bash",
+      args: "cmd/backend.sh",
       watch: false,
       autorestart: true,
       restart_delay: 5000,
     },
     {
-      name: "start",
-      script: "bun",
-      args: "run prod",
+      name: "front",
+      script: "bash",
+      args: "cmd/frontend.sh",
       watch: false,
       autorestart: true,
       restart_delay: 5000,

@@ -1,11 +1,16 @@
 import { vitePlugin } from "@remix-run/dev";
-import { defineConfig } from "vite";
+import { defineConfig, ServerOptions } from "vite";
 
 declare module "@remix-run/node" {
   interface Future {
     v3_singleFetch: true;
   }
 }
+
+const options: ServerOptions = {
+  host: "0.0.0.0",
+  port: 3000,
+};
 
 export default defineConfig({
   plugins: [
@@ -21,7 +26,6 @@ export default defineConfig({
     }),
     (await import("vite-tsconfig-paths")).default(),
   ],
-  server: {
-    host: "0.0.0.0",
-  },
+  server: options,
+  preview: options,
 });

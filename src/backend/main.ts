@@ -1,27 +1,23 @@
 import { json, Request, Response } from "express";
 import { createTransport } from "nodemailer";
 import { networkInterfaces } from "os";
-import { readFileSync } from "fs";
 
 (async function (): Promise<void> {
-  const { parsed } = (await import("dotenv")).config({
-    path: "/home/env/.env.local" /* ".env.local" */,
-  });
-
-  const cors = (await import("cors")).default({
-    origin: "*",
-    credentials: true,
-  });
+  const { EMAIL_USER, EMAIL_PASS, EMAIL_TO, HTTP } = (
+    await import("dotenv")
+  ).config({
+    path: ".local/.env",
+  }).parsed!;
 
   const express = (await import("express")).default();
+  const cors = (await import("cors")).default;
   const http = (await import("http")).default;
-  const https = (await import("https")).default;
 
   const listener = () => {
     try {
       express
-        .use(cors)
         .use(json())
+        .use(cors())
         .post("/api/send_mail", async (req: Request, res: Response) => {
           if (req.method === "POST") {
             const transporter = createTransport({
@@ -29,15 +25,15 @@ import { readFileSync } from "fs";
               port: 465,
               secure: true,
               auth: {
-                user: parsed?.EMAIL_USER,
-                pass: parsed?.EMAIL_PASS,
+                user: EMAIL_USER,
+                pass: EMAIL_PASS,
               },
             });
 
             try {
               await transporter.sendMail({
-                from: parsed?.EMAIL_USER,
-                to: parsed?.EMAIL_TO,
+                from: EMAIL_USER,
+                to: EMAIL_TO,
                 subject: `Данные отправленые от: ${req.body.fio}`,
                 text: JSON.stringify(req.body),
               });
@@ -66,22 +62,11 @@ import { readFileSync } from "fs";
     }
   };
 
-  const ssl = {
-    key: readFileSync(parsed!.KEY),
-    cert: readFileSync(parsed!.CERT),
-  };
+  http.createServer(express).listen(HTTP, listener);
 
-  http.createServer(express).listen(parsed!.HTTP, listener);
-  https.createServer(ssl, express).listen(parsed!.HTTPS, listener);
+  const { address } = Object.values(networkInterfaces())
+    .flat()
+    .find(({ family, internal }: any) => family === "IPv4" && internal)!;
 
-  const host = (() => {
-    const interfaces = Object.values(networkInterfaces()).flat();
-    const ip = interfaces.find((e) => e?.family === "IPv4" && !e?.internal);
-    return {
-      http: `http://${ip?.address}:${parsed!.HTTP}`,
-      https: `https://${ip?.address}:${parsed!.HTTPS}`,
-    };
-  })();
-  console.log("env", parsed?.ENV);
-  console.log(host);
+  console.log([`http://${address}:${HTTP}`]);
 })();
