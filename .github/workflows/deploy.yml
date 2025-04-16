@@ -57,7 +57,7 @@ jobs:
                 listen 80;
                 server_name ${{ secrets.DOMAIN }};
                 return 301 https://${{ secrets.DOMAIN }}$request_uri;
-            } 
+            }
             server {
                 listen 443 ssl http2;
                 server_name ${{ secrets.DOMAIN }};
