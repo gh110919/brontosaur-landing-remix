@@ -55,7 +55,7 @@ sudo tee /etc/caddy/Caddyfile << EOF
 $DOMAIN {
     bind $HOST
 
-    reverse_proxy 127.0.0.1:$PORT
+    reverse_proxy 127.0.0.1:$FRONT
 
     @api path /api/*
     handle @api {
