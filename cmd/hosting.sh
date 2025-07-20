@@ -18,10 +18,6 @@ https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /
 sudo apt-get update && sudo apt-get install \
   -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-sudo pkill -9 caddy || true
-sudo fuser -k 80/tcp || true
-sudo fuser -k 443/tcp || true
-
 sudo apt-get -o Dpkg::Options::="--force-confnew" full-upgrade -y
 
 sudo apt-get update && sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -36,9 +32,11 @@ curl -1sLf "https://dl.cloudsmith.io/public/caddy/stable/gpg.key" | sudo gpg \
 echo "deb [signed-by=/etc/apt/keyrings/caddy-stable-archive-keyring.gpg] \
 https://dl.cloudsmith.io/public/caddy/stable/deb/debian all main" | sudo tee /etc/apt/sources.list.d/caddy-stable.list > /dev/null
 
-sudo apt-get update && sudo apt-get install -y caddy
+sudo apt-get update && sudo apt-get install -y caddy && sudo apt autoremove -y
 
-sudo apt autoremove -y
+sudo pkill -9 caddy || true
+sudo fuser -k 80/tcp || true
+sudo fuser -k 443/tcp || true
 
 sudo tee /etc/caddy/Caddyfile << EOF
 {
