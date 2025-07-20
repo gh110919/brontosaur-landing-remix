@@ -49,7 +49,7 @@
   "name": "brontosaur-landing-remix",
   "private": true,
   "scripts": {
-    "_docker_container": "bash cmd/container.sh",
+    "_docker_container": "bash cmd/compose.sh",
     "_docker_prune": "bash cmd/prune.sh",
     "_env_append": "bash cmd/append.sh",
     "_gh_secrets": "bash cmd/secrets.sh",

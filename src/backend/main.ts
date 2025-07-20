@@ -7,7 +7,7 @@ import { networkInterfaces } from "os";
   const { EMAIL_USER, EMAIL_PASS, EMAIL_TO, BACK } = (
     await import("dotenv")
   ).config({
-    path: ".local/.env",
+    path: ".env",
   }).parsed!;
 
   const express = (await import("express")).default();

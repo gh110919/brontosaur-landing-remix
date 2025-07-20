@@ -2,96 +2,24 @@ name: Deploy to Hosting
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.2.0
-      - name: Install dependencies
-        run: |
-          sudo apt-get install curl gnupg lsb-release -y
-      - name: Add Docker GPG key and repository
-        run: |
-          curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
-          | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-          echo "deb [arch=$(dpkg --print-architecture) \
-          signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
-          https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-          | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-      - name: Install Docker and Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-          docker-ce docker-ce-cli \
-          containerd.io \
-          docker-compose-plugin
       - name: Deploy to Hosting
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@master
+        env:
+          WORKDIR: "/home/${{secrets.PROJECT}}"
+          GIT: "https://${{secrets.GH_USER}}:${{secrets.GH_TOKEN}}@github.com/${{secrets.GH_USER}}/${{secrets.PROJECT}}.git"
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
           script: |
-            sudo rm -rf /home/${{ secrets.PROJECT }}
-            sudo apt-get update -y 
-            sudo apt-get upgrade -y
-            sudo apt-get install docker.io -y
-            sudo apt-get install docker-compose-v2 -y
-            sudo apt-get install nginx -y
-            sudo docker stop $(docker ps -aq)
-            sudo docker rm $(docker ps -aq)
-            sudo docker rmi -f $(docker images -q)
-            sudo docker volume rm $(docker volume ls -q)
-            sudo docker system prune -a -f
-            git clone https://\
-            ${{ secrets.GH_USER }}:\
-            ${{ secrets.GH_TOKEN }}@github.com/\
-            ${{ secrets.GH_USER }}/\
-            ${{ secrets.PROJECT }}.git /home/\
-            ${{ secrets.PROJECT }}
-            cd /home/${{ secrets.PROJECT }} 
-            sudo tee /home/${{ secrets.PROJECT }}/nginx.conf <<EOL
-            server {
-                listen 80;
-                server_name ${{ secrets.DOMAIN }};
-                return 301 https://${{ secrets.DOMAIN }}$request_uri;
-            }
-            server {
-                listen 443 ssl http2;
-                server_name ${{ secrets.DOMAIN }};
-                ssl_certificate /home/${{ secrets.PROJECT }}/.local/${{ secrets.PROJECT }}.cer;
-                ssl_certificate_key /home/${{ secrets.PROJECT }}/.local/${{ secrets.PROJECT }}.key;
-                ssl_protocols TLSv1.2 TLSv1.3;
-                ssl_prefer_server_ciphers on;
-                ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;
-                location / {
-                    proxy_pass http://127.0.0.1:${{ secrets.FRONT }};
-                }
-                expires 1d;
-            }
-            server {
-                listen 3443 ssl http2;
-                server_name ${{ secrets.DOMAIN }};
-                ssl_certificate /home/${{ secrets.PROJECT }}/.local/${{ secrets.PROJECT }}.cer;
-                ssl_certificate_key /home/${{ secrets.PROJECT }}/.local/${{ secrets.PROJECT }}.key;
-                ssl_protocols TLSv1.2 TLSv1.3;
-                ssl_prefer_server_ciphers on;
-                ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;
-                location / {
-                    proxy_pass http://127.0.0.1:${{ secrets.BACK }};
-                }
-                expires 1d;
-            }
-            EOL
-            sudo mkdir -p .local
-            echo "${{ secrets.CERT }}" | base64 -d > .local/${{ secrets.PROJECT }}.cer
-            echo "${{ secrets.KEY }}" | base64 -d > .local/${{ secrets.PROJECT }}.key
-            echo "${{ secrets.ENV }}" | base64 -d > .local/.env
-            sudo sed -i "s\
-            |include /etc/nginx/sites-enabled/\*;\
-            |include /home/${{ secrets.PROJECT }}/nginx.conf;\
-            |" /etc/nginx/nginx.conf
-            sudo docker compose --env-file .local/.env up -d
-            sudo systemctl restart nginx
+            sudo rm -rf ${{env.WORKDIR}}
+            sudo mkdir -p ${{env.WORKDIR}}
+            cd ${{env.WORKDIR}}
+            git clone ${{env.GIT}} .
+            echo "${{secrets.ENV}}" | base64 -d > .env
+            bash "cmd/hosting.sh"

@@ -1,28 +1,23 @@
-volumes:
-  volume_application:
 networks:
-  network_application:
+  default:
+    name: network_default_bridge
     driver: bridge
 services:
   application:
     build:
       context: .
-      dockerfile: bun.dockerfile
+      dockerfile: bun.bookworm-slim.dockerfile
     deploy:
       replicas: 1
       resources:
         limits:
           cpus: "1"
           memory: "1G"
-    networks:
-      - network_application
     ports:
       - "3000:3000"
       - "3080:3080"
-    volumes:
-      - "volume_application:/home/volume_application"
     stdin_open: true
     tty: true
     restart: always
-    image: image_application
-    container_name: container_application
+    image: application_image
+    container_name: application_container
