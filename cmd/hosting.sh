@@ -22,17 +22,25 @@ sudo apt-get -o Dpkg::Options::="--force-confnew" full-upgrade -y
 
 sudo apt-get update && sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 
-# Caddy
-sudo mkdir -p /etc/apt/keyrings
+# Удаляем неработающий репозиторий Caddy (если был добавлен ранее)
+sudo rm -f /etc/apt/sources.list.d/caddy-stable.list
 
-curl -1sLf "https://dl.cloudsmith.io/public/caddy/stable/gpg.key" | sudo gpg \
-  --batch --yes --dearmor \
-  -o /etc/apt/keyrings/caddy-stable-archive-keyring.gpg
+# Создаём папку для Caddyfile, если не существует
+sudo mkdir -p /etc/caddy
 
-echo "deb [signed-by=/etc/apt/keyrings/caddy-stable-archive-keyring.gpg] \
-https://dl.cloudsmith.io/public/caddy/stable/deb/debian all main" | sudo tee /etc/apt/sources.list.d/caddy-stable.list > /dev/null
+# Устанавливаем Caddy через официальный скрипт
+curl -1sLf 'https://caddyserver.com/api/download?os=linux&arch=amd64' | sudo tar xz -C /usr/local/bin caddy
+sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
+sudo useradd --system --group --home /var/lib/caddy --shell /usr/sbin/nologin caddy || true
+sudo mkdir -p /var/lib/caddy /var/log/caddy
+sudo chown -R caddy:caddy /etc/caddy /var/lib/caddy /var/log/caddy
 
-sudo apt-get update && sudo apt-get install -y caddy && sudo apt autoremove -y
+# Проверяем, что Caddy установлен
+caddy version
+
+# Проверяем и запускаем Docker
+sudo systemctl start docker || true
+sudo systemctl enable docker || true
 
 sudo pkill -9 caddy || true
 sudo fuser -k 80/tcp || true
@@ -66,8 +74,5 @@ EOF
 sudo caddy fmt --overwrite "/etc/caddy/Caddyfile"
 sudo caddy validate --config "/etc/caddy/Caddyfile"
 sudo chown -R caddy:caddy "/etc/caddy"
-
-sudo systemctl daemon-reload
-sudo systemctl restart caddy || (journalctl -u caddy --no-pager && exit 1)
 
 bash "cmd/compose.sh"
