@@ -1,13 +1,8 @@
-export $(grep -v "^#" ".env" | xargs)
-export GPG_TTY=$(tty)
+export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
 
 sudo apt install docker.io -y
 sudo apt install caddy -y
-
 sudo apt install docker-compose-v2 -y
-
-sudo systemctl restart docker 
-sudo systemctl restart caddy 
 
 sudo tee "/etc/caddy/Caddyfile" << EOF
 {
@@ -16,8 +11,6 @@ sudo tee "/etc/caddy/Caddyfile" << EOF
   renew_interval 24h
 }
 $DOMAIN {
-    bind $HOST
-
     reverse_proxy 127.0.0.1:$FRONT
 
     @api path /api/*
@@ -33,5 +26,9 @@ $DOMAIN {
     }
 }
 EOF
+
+sudo systemctl restart docker
+sudo systemctl restart docker-compose-v2
+sudo systemctl restart caddy
 
 bash "cmd/compose.sh"
