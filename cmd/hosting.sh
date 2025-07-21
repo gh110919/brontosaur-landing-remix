@@ -4,8 +4,8 @@ sudo apt install docker.io -y
 sudo apt install docker-compose-v2 -y
 
 sudo apt install caddy -y
-sudo chown -R caddy:caddy /var/lib/caddy
-sudo chmod -R 700 /var/lib/caddy
+sudo chown -R caddy:caddy "/var/lib/caddy"
+sudo chmod -R 700 "/var/lib/caddy"
 
 sudo tee "/etc/caddy/Caddyfile" << EOF
 {
@@ -14,6 +14,8 @@ sudo tee "/etc/caddy/Caddyfile" << EOF
   renew_interval 24h
 }
 $DOMAIN {
+    bing $HOST
+
     reverse_proxy 127.0.0.1:$FRONT
 
     @api path /api/*
