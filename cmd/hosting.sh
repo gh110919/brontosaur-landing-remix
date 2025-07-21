@@ -1,11 +1,12 @@
 export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
 
-sudo apt install docker.io -y
-sudo apt install docker-compose-v2 -y
+sudo apt-get update && sudo apt-get install \
+    -y \
+    docker.io \
+    docker-compose-v2 \
+    caddy
 
-sudo apt install caddy -y
 sudo chown -R caddy:caddy "/var/lib/caddy"
-sudo chmod -R 700 "/var/lib/caddy"
 
 sudo tee "/etc/caddy/Caddyfile" << EOF
 {
@@ -30,8 +31,6 @@ $DOMAIN {
 }
 EOF
 
-sudo systemctl restart caddy
-sudo systemctl restart docker
-sudo systemctl restart docker-compose-v2
+sudo systemctl restart caddy docker
 
 bash "cmd/compose.sh"
