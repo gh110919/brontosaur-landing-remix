@@ -14,8 +14,6 @@ sudo tee "/etc/caddy/Caddyfile" << EOF
   renew_interval 24h
 }
 $DOMAIN {
-    bing $HOST
-
     reverse_proxy 127.0.0.1:$FRONT
 
     @api path /api/*
