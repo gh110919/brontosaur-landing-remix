@@ -27,8 +27,11 @@ $DOMAIN {
 }
 EOF
 
+sudo chown -R caddy:caddy /var/lib/caddy
+sudo chmod -R 700 /var/lib/caddy
+
+sudo systemctl restart caddy
 sudo systemctl restart docker
 sudo systemctl restart docker-compose-v2
-sudo systemctl restart caddy
 
 bash "cmd/compose.sh"
