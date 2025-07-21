@@ -1,10 +1,6 @@
-export $(cat .env | grep -v '^#' | grep -v '^$' | xargs)
+export $(cat ".env" | grep -v '^#' | grep -v '^$' | xargs)
 
-sudo apt-get update && sudo apt-get install \
-    -y \
-    docker.io \
-    docker-compose-v2 \
-    caddy
+sudo apt-get update && sudo apt-get install -y caddy docker.io docker-compose-v2
 
 sudo chown -R caddy:caddy "/var/lib/caddy"
 
