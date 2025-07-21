@@ -1,1 +1,1 @@
-bun run src/utils/append.ts --updated ".env" --renewing ".env" --name "env"
+bun run "utils/append.ts" --updated ".env" --renewing ".env" --name "env"

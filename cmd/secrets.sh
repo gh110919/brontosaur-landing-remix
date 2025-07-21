@@ -1,1 +1,1 @@
-bun run src/utils/set-env-gh-actions-secrets.ts --env ".env"
+bun run "utils/set-env-gh-actions-secrets.ts" --env ".env"

@@ -1,73 +1,13 @@
 export $(grep -v "^#" ".env" | xargs)
 export GPG_TTY=$(tty)
 
-sudo apt-get update && sudo apt-get install \
-  -y \
-  ca-certificates \
-  curl gnupg \
-  lsb-release
+sudo apt install docker.io -y
+sudo apt install caddy -y
 
-sudo mkdir \
-  -p "/etc/apt/keyrings"
+sudo apt install docker-compose-v2 -y
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg \
-  --batch \
-  --yes \
-  --dearmor \
-  -o /etc/apt/keyrings/docker.gpg
-
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee \
-  -y /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt-get update && sudo apt-get install \
-  -y \
-  docker-ce \
-  docker-ce-cli \
-  containerd.io \
-  docker-compose-plugin
-
-sudo apt-get \
-  -o Dpkg::Options::="--force-confnew" \
-  full-upgrade \
-  -y
-
-sudo apt-get update && sudo apt install \
-  -y \
-  debian-keyring \
-  debian-archive-keyring \
-  apt-transport-https
-
-sudo rm \
-  -f /etc/apt/sources.list.d/caddy-stable.list
-
-sudo mkdir \
-  -p /etc/caddy
-
-curl \
-  -1sLf 'https://caddyserver.com/api/download?os=linux&arch=amd64' | sudo tar \
-  xz \
-  -C /usr/local/bin caddy
-
-sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
-sudo useradd \
-  --system \
-  --group \
-  --home /var/lib/caddy \
-  --shell /usr/sbin/nologin caddy || true
-
-sudo mkdir \
-  -p /var/lib/caddy /var/log/caddy
-
-sudo chown \
-  -R caddy:caddy /etc/caddy /var/lib/caddy /var/log/caddy
-
-sudo systemctl start docker || true
-sudo systemctl enable docker || true
-
-sudo pkill -9 caddy || true
-sudo fuser -k 80/tcp || true
-sudo fuser -k 443/tcp || true
+sudo systemctl restart docker 
+sudo systemctl restart caddy 
 
 sudo tee "/etc/caddy/Caddyfile" << EOF
 {
@@ -93,9 +33,5 @@ $DOMAIN {
     }
 }
 EOF
-
-sudo caddy fmt --overwrite "/etc/caddy/Caddyfile"
-sudo caddy validate --config "/etc/caddy/Caddyfile"
-sudo chown -R caddy:caddy "/etc/caddy"
 
 bash "cmd/compose.sh"
